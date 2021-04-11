@@ -1,32 +1,23 @@
 package sample;
 
+import javafx.scene.chart.XYChart;
+
 public class Point {
 
-    private double x;
-
-    private double y;
+    private XYChart.Data<Double, Double> point;
 
     public Point() {
     }
 
     public Point(double x, double y) {
-        this.x = x;
-        this.y = y;
+        point = new XYChart.Data<>(x, y);
     }
 
-    public double getX() {
-        return x;
+    public XYChart.Data<Double, Double> getPoint() {
+        return point;
     }
 
-    public void setX(double x) {
-        this.x = x;
-    }
-
-    public double getY() {
-        return y;
-    }
-
-    public void setY(double y) {
-        this.y = y;
+    public void setPoint(XYChart.Data<Double, Double> point) {
+        this.point = point;
     }
 }

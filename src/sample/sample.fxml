@@ -1,15 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
 <GridPane alignment="center" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
-   <Pane fx:id="btnsArea" maxHeight="600.0" maxWidth="100.0" minHeight="600.0" minWidth="100.0" prefHeight="600.0" prefWidth="100.0" style="-fx-border-color: black; -fx-background-color: silver" GridPane.columnIndex="0">
-   </Pane>
+    <Pane fx:id="btnsArea" maxHeight="600.0" maxWidth="100.0" minHeight="600.0" minWidth="100.0" prefHeight="600.0" prefWidth="100.0" style="-fx-border-color: black; -fx-background-color: silver" GridPane.columnIndex="0">
+        <TableView fx:id="table" maxHeight="550.0" maxWidth="100.0" minHeight="550.0" minWidth="100.0" prefHeight="550.0" prefWidth="100.0">
+            <columns>
+                <TableColumn maxWidth="50.0" minWidth="50.0" prefWidth="50.0" text="X" fx:id="x" />
+                <TableColumn fx:id="y" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" text="Y" />
+            </columns>
+        </TableView>
+      <TextField fx:id="input" layoutY="550.0" maxHeight="25.0" maxWidth="100.0" minHeight="25.0" minWidth="100.0" prefHeight="25.0" prefWidth="100.0" />
+      <Button fx:id="addBtn" layoutY="574.0" maxHeight="25.0" maxWidth="33.0" minHeight="25.0" minWidth="33.0" mnemonicParsing="false" onAction="#add" prefHeight="25.0" prefWidth="33.0" text="A" />
+      <Button fx:id="editBtn" layoutX="33.0" layoutY="574.0" maxHeight="25.0" maxWidth="33.0" minHeight="25.0" minWidth="33.0" mnemonicParsing="false" onAction="#edit" prefHeight="25.0" prefWidth="33.0" text="E" />
+      <Button fx:id="deleteBtn" layoutX="66.0" layoutY="574.0" maxHeight="25.0" maxWidth="33.0" minHeight="25.0" minWidth="33.0" mnemonicParsing="false" onAction="#delete" prefHeight="25.0" prefWidth="33.0" text="D" />
+    </Pane>
     <Pane fx:id="actionArea" maxHeight="600.0" maxWidth="700.0" minHeight="600.0" minWidth="700.0" prefHeight="600.0" prefWidth="700.0" style="-fx-border-color: black;" GridPane.columnIndex="1">
-        <LineChart fx:id="chartView" maxHeight="600.0" maxWidth="700.0" minHeight="600.0" minWidth="700.0" prefHeight="600.0" prefWidth="700.0">
+        <LineChart fx:id="chartView" animated="false" maxHeight="600.0" maxWidth="700.0" minHeight="600.0" minWidth="700.0" prefHeight="600.0" prefWidth="700.0">
             <xAxis>
-                <CategoryAxis side="BOTTOM" />
+                <NumberAxis side="BOTTOM" />
             </xAxis>
             <yAxis>
                 <NumberAxis side="LEFT" />

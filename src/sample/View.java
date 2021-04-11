@@ -7,12 +7,18 @@ import javafx.scene.chart.XYChart;
 
 public class View {
 
-    private LineChart<Number, Number> chartView;
+    private LineChart<Double, Double> chartView;
+
+    private ObservableList<XYChart.Series<Double, Double>> series;
 
     private Chart chart;
 
-    public View(LineChart<Number, Number> chartView) {
+    public View(LineChart<Double, Double> chartView, Chart chart) {
         this.chartView = chartView;
+        this.chart = chart;
+        series = FXCollections.observableArrayList();
+        series.add(new XYChart.Series<>(this.chart.getPoints()));
+        this.chartView.setData(series);
     }
 
     public Chart getChart() {
@@ -21,16 +27,5 @@ public class View {
 
     public void setChart(Chart chart) {
         this.chart = chart;
-    }
-
-    public void update() {
-        XYChart.Series series = new XYChart.Series();
-        ObservableList<XYChart.Data> data = FXCollections.observableArrayList();
-        for (Point point : chart.getPoints()) {
-            data.add(new XYChart.Data(point.getX(), point.getY()));
-        }
-        series.setData(data);
-        chartView.getData().clear();
-        chartView.getData().add(series);
     }
 }
