@@ -8,6 +8,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 
+import java.awt.print.PrinterException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -61,22 +62,45 @@ public class Controller implements Initializable {
 
     @FXML
     public void add() {
-        if (!input.getText().equals("")) {
-            chart.addPoint(Double.parseDouble(input.getText()));
+        try {
+            if (!input.getText().equals("")) {
+                chart.addPoint(Double.parseDouble(input.getText()));
+            }
+        } catch (Exception ex) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Ошибка");
+            alert.setContentText("Некорректный ввод!");
+            alert.show();
         }
+
     }
 
     @FXML
     public void edit() {
-        if (table.getSelectionModel().getSelectedIndex() != -1 && !input.getText().equals("")) {
-            chart.editPoint(table.getSelectionModel().getSelectedIndex(), Double.parseDouble(input.getText()));
+        try {
+            if (table.getSelectionModel().getSelectedIndex() != -1 && !input.getText().equals("")) {
+                chart.editPoint(table.getSelectionModel().getSelectedIndex(), Double.parseDouble(input.getText()));
+            }
+        } catch (Exception ex) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Ошибка");
+            alert.setContentText("Некорректный ввод!");
+            alert.show();
         }
     }
 
     @FXML
     public void delete() {
-        if (table.getSelectionModel().getSelectedIndex() != -1) {
-            chart.deletePoint(table.getSelectionModel().getSelectedIndex());
+        try {
+            if (table.getSelectionModel().getSelectedIndex() != -1) {
+                chart.deletePoint(table.getSelectionModel().getSelectedIndex());
+            }
+        } catch (Exception ex) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Ошибка");
+            alert.setContentText("Некорректный ввод!");
+            alert.show();
         }
+
     }
 }

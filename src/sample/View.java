@@ -18,6 +18,7 @@ public class View {
         this.chart = chart;
         series = FXCollections.observableArrayList();
         series.add(new XYChart.Series<>(this.chart.getPoints()));
+        series.get(0).setName("Y = X^2");
         this.chartView.setData(series);
     }
 
